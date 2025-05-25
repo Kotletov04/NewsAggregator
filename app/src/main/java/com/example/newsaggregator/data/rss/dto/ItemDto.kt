@@ -1,5 +1,6 @@
 package com.example.newsaggregator.data.rss.dto
 
+import com.example.newsaggregator.domain.model.ItemModel
 import kotlinx.serialization.Serializable
 import nl.adaptivity.xmlutil.serialization.XmlElement
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
@@ -41,3 +42,17 @@ data class ItemDto(
     val dcDate: String
 
 )
+
+fun ItemDto.toItemModel(): ItemModel {
+    return ItemModel(
+        title = title,
+        link = link,
+        description = description,
+        categories = categories.map { it.toCategoryModel()},
+        pubDate = pubDate,
+        guid = guid,
+        dcCreator = dcCreator,
+        contents = contents.map { it.toContentModel() }
+    )
+
+}

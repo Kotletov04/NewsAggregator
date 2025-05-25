@@ -1,7 +1,7 @@
 package com.example.newsaggregator.domain.usecase
 
 import com.example.newsaggregator.domain.common.Resource
-import com.example.newsaggregator.domain.model.NewsModel
+import com.example.newsaggregator.domain.model.ItemModel
 import com.example.newsaggregator.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -11,7 +11,7 @@ import java.io.IOException
 class NewsUsecase(
     private val newsRepository: NewsRepository
 ) {
-    operator fun invoke(): Flow<Resource<NewsModel>> = flow {
+    operator fun invoke(): Flow<Resource<List<ItemModel>>> = flow {
 
         try {
             emit(Resource.Loading())
@@ -21,6 +21,7 @@ class NewsUsecase(
             emit(Resource.Error(message = e.localizedMessage ?: "Неизвестная ошибка"))
         } catch (e: IOException) {
             emit(Resource.Error(message = "Ошибка сети"))
+
         }
 
     }

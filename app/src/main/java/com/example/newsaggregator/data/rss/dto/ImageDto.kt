@@ -19,3 +19,4 @@ data class ImageDto(
     @XmlElement(true)
     val link: String
 )
+

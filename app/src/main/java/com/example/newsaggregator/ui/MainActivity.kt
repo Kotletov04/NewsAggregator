@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.newsaggregator.data.rss.RssFeed
 import com.example.newsaggregator.ui.components.MainScreenComponent
@@ -36,6 +37,7 @@ class MainActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
             NewsAggregatorTheme {
                 MainScreen()
@@ -47,6 +49,7 @@ class MainActivity: ComponentActivity() {
     private fun MainScreen() {
         val viewModel: MainScreenViewModel by viewModels()
         viewModel.getNews()
+
         MainScreenComponent(viewModel = viewModel)
     }
 

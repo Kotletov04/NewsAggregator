@@ -1,5 +1,6 @@
 package com.example.newsaggregator.data.rss.dto
 
+import com.example.newsaggregator.domain.model.ContentModel
 import kotlinx.serialization.Serializable
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
@@ -11,3 +12,11 @@ data class ContentDto (
     val url: String,
     val credit: CreditDto?,
 )
+
+fun ContentDto.toContentModel(): ContentModel {
+    return ContentModel(
+        type = type,
+        width = width,
+        url = url
+    )
+}

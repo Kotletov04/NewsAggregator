@@ -1,4 +1,4 @@
-package com.example.newsaggregator.di
+package com.example.newsaggregator.ui.di
 
 import com.example.newsaggregator.domain.repository.NewsRepository
 import com.example.newsaggregator.domain.usecase.NewsUsecase
